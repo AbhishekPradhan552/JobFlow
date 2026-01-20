@@ -5,6 +5,7 @@ const AuthContext = createContext()
 export function AuthProvider({children}){
     const [user, setUser]= useState(null)
     const [loading, setLoading]= useState(true)
+    const API_URL = import.meta.env.VITE_API_URL;
     // restore session on refresh
     useEffect(()=>{
         const token = localStorage.getItem("token")
@@ -17,7 +18,7 @@ export function AuthProvider({children}){
     async function login(email,password){
         setLoading(true)
         try{
-            const res = await fetch ("http://localhost:5001/api/auth/login",{
+            const res = await fetch (`${API_URL}/api/auth/login`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",
@@ -41,7 +42,7 @@ export function AuthProvider({children}){
     async function register( name,email, password){
         setLoading(true)
         try{
-            const res = await fetch("http://localhost:5001/api/auth/register",{
+            const res = await fetch(`${API_URL}/api/auth/register`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",                    
