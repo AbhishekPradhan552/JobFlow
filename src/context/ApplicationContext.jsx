@@ -8,6 +8,8 @@ const initialState={
     error:null,
     actionLoading:false,
 }
+const API_URL = import.meta.env.VITE_API_URL;
+
 function applicationReducer(state,action){
     switch(action.type){
         case "LOADING":
@@ -80,10 +82,10 @@ export function ApplicationProvider({children}){
         async function loadApplications(){
             const token= localStorage.getItem("token")
             if(!token) return
-            
+
             dispatch({type:"LOADING"})
             try{
-                const res = await authFetch("http://localhost:5001/api/applications")
+                const res = await authFetch(`${API_URL}/api/applications`)
                                
                 if(!res.ok){
                     if(res.status === 401 ){

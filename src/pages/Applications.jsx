@@ -20,9 +20,13 @@ export default function Applications(){
     const [searchText,setSearchText]=useState("")
     const[statusFilter, setStatusFilter]=useState("ALL")
     const[params]=useSearchParams()
+    const API_URL = import.meta.env.VITE_API_URL;
+
 
     const dashboardFilter=params.get("status")
     const visibleApplications= dashboardFilter? applications.filter(a=>a.status === dashboardFilter):applications
+
+
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -30,7 +34,7 @@ export default function Applications(){
 
         dispatch({type:"ACTION_LOADING"})
         try{
-            const res= await authFetch("http://localhost:5001/api/applications",{
+            const res= await authFetch(`${API_URL}/api/applications`,{
                 method:"POST",                                        
                 body: JSON.stringify({company,role,})                                                        
             })
@@ -63,7 +67,7 @@ export default function Applications(){
         dispatch({type:"ACTION_LOADING"})
 
         try{
-            const res= await authFetch(`http://localhost:5001/api/applications/${editingId}`,{
+            const res= await authFetch(`${API_URL}/api/applications/${editingId}`,{
             method:"PUT",
             
             body:JSON.stringify({
@@ -95,7 +99,7 @@ export default function Applications(){
         dispatch({type:"ACTION_LOADING"})
 
         try{
-            const res= await authFetch(`http://localhost:5001/api/applications/${id}`,{
+            const res= await authFetch(`${API_URL}/api/applications/${id}`,{
                 method:"DELETE",
 
             })
@@ -119,7 +123,7 @@ export default function Applications(){
     async function handleStatusChange(id,newStatus){
         dispatch({type:"ACTION_LOADING"})
         try{
-            const res = await authFetch(`http://localhost:5001/api/applications/${id}`,{
+            const res = await authFetch(`${API_URL}/api/applications/${id}`,{
                 method:"PUT",
                 
                 body:JSON.stringify({status: newStatus}),
