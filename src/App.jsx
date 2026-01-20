@@ -12,7 +12,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import ProtectedRoute from "./components/ProtectedRoute"
-import Landing from "./pages/Landing"
+
 
 
 export default function App(){
