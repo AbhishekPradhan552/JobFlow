@@ -2,6 +2,7 @@ import {Routes,Route} from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import { useState } from 'react'
 
+import Landing from "./pages/Landing"
 import Register from "./pages/Register"
 import Login from "./pages/Login"
 import Dashboard from "./pages/Dashboard"
