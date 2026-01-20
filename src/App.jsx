@@ -11,6 +11,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 import ProtectedRoute from "./components/ProtectedRoute"
+import Landing from "./pages/Landing"
 
 
 export default function App(){
@@ -19,6 +20,7 @@ export default function App(){
       <Navbar/>
       <main className="max-w-6xl mx-auto px-6 py-8">
         <Routes>
+          <Route path="/" element={<Landing/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
           <Route path="/login" element={<Login/>}/>
           
